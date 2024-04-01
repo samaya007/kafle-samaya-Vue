@@ -61,7 +61,7 @@ createApp({
             this.tvSeries = character.tvSeries.join(", ");
 
             // GSAP Animation
-            gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.5 });
+            gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.8 });
 
           } else {
             this.error = 'Sorry, no character found with the given name. Please choose a different character.';
