@@ -1,0 +1,80 @@
+
+/* Basic styling for the navigation */
+nav {
+    background-color: #00203FFF; /* Updated background color */
+    color: #fff;
+    padding: 10px 0; /* Adjusted padding */
+    border-top-left-radius: 15px; /* Rounded bottom left corner */
+    border-top-right-radius: 15px;
+}
+
+.menu-toggle {
+    display: none; /* Hide by default on larger screens */
+    cursor: pointer;
+    padding: 10px;
+    color: #fff;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    padding: 15px 20px; /* Increased padding */
+    transition: background-color 0.3s;
+    font-size: 18px; /* Increased font size */
+}
+
+.menu li {
+    display: inline-block;
+    margin-right: 250px; /* Increased margin between menu items */
+}
+
+.menu li:last-child {
+    margin-right: 0;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 20px; /* Increased padding */
+    transition: background-color 0.3s;
+    font-size: 18px; /* Increased font size */
+    position: relative; /* Add relative positioning */
+}
+
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* Set initial width to 0 */
+    height: 2px;
+    background-color: #fff; /* White underline color */
+    transition: width 0.3s ease-in-out; /* Smooth transition */
+}
+
+.menu a:hover::after {
+    width: 100%; /* Expand width to 100% upon hover */
+}
+
+
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Show on smaller screens */
+    }
+
+    .menu {
+        display: none; /* Hide by default on smaller screens */
+        padding: 10px 0; /* Adjusted padding */
+    }
+
+    .menu.active {
+        display: block; /* Show when active (menu toggle is clicked) */
+    }
+}
+
+
+
+
