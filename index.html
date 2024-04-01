@@ -31,7 +31,7 @@
           <li v-for="character in charactersData">
             <h3>Name: <a href="#character-info" @click="getCharacter(character.name)">{{ character.name }}</a>
             </h3>
-            <img :src="character.image" alt="Character image" v-if="character.image">
+            <img :src="character.images" alt="Character image" v-if="character.image">
           </li>
         </ul>
       </div>

@@ -51,7 +51,6 @@ createApp({
             this.born = character.born ? character.born : "Not Available";
             this.tvSeries = character.tvSeries.length > 0 ? character.tvSeries.join(", ") : "Not Available";
               gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.5 });
-
           } else {
             this.error = 'Sorry, no character found with the given name. Please choose a different character.';
           }
