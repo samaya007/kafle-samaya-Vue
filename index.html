@@ -1,69 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1.0, width=device-width">
-  <title>Wizarding World</title>
-  <link href="https://fonts.googleapis.com/css?family=Lato%7CRaleway" rel="stylesheet">
-  <link href="css/grid.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
-  <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <!-- use the production vue js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-
-  <script type="module" src="js/main.js"></script>
-
-</head>
-
-<body>
-
-
-
-  <nav>
-    <div class="menu-toggle">&#9776;</div>
-    <ul class="menu">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Learn More</a></li>
-  
-
-    </ul>
-  </nav>
-  
-  <div class="grid-con" id="app">
-
-
-
-    <div class="col-span-full m-col-start-1 m-col-end-7">
-      <h2>Explore Characters from the World of Ice and Fire</h2>
-      <p>Click on a character to discover more about them.</p>
-      <ul id="character-list">
-        <li v-for="character in charactersData">
-          <h3>Name: <a href="#character-info" @click="getCharacter(character.name)">{{ character.name }}</a></h3>
-          <img :src="character.image" alt="Character image" v-if="character.image">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <title>Wizard World</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato%7CRaleway" rel="stylesheet">
+    <link href="css/grid.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="menu-toggle">&#9776;</div>
+      <ul class="menu">
+        <li>
+          <a href="#">Home</a>
+        </li>
+        <li>
+          <a href="#">Learn More</a>
         </li>
       </ul>
-    </div>
-
-
-    <div class="col-span-full m-col-start-7 m-col-end-13" id="characterInfoCon">
-      <div v-if="error">{{ error }}</div>
-      <div v-if="!error" id="character-info">
-        <p>Aliases: {{ aliases}}</p>
-        <p>Culture: {{ culture }}</p>
-        <p>Birth: {{ born }}</p>
-        <p>TV Series: {{ tvSeries }}</p>
+    </nav>
+    <div class="grid-con" id="app">
+      <div class="col-span-full m-col-start-1 m-col-end-7">
+        <h2>Explore Characters from the World of Ice and Fire</h2>
+        <p>Click on a character to discover more about them.</p>
+        <ul id="character-list">
+          <li v-for="character in charactersData">
+            <h3>Name: <a href="#character-info" @click="getCharacter(character.name)">{{ character.name }}</a>
+            </h3>
+            <img :src="character.image" alt="Character image" v-if="character.image">
+          </li>
+        </ul>
+      </div>
+      <div class="col-span-full m-col-start-7 m-col-end-13" id="characterInfoCon">
+        <div v-if="error">{{ error }}</div>
+        <div v-if="!error" id="character-info">
+          <p>Aliases: {{ aliases}}</p>
+          <p>Culture: {{ culture }}</p>
+          <p>Birth: {{ born }}</p>
+          <p>TV Series: {{ tvSeries }}</p>
+        </div>
       </div>
     </div>
-
-
-  </div>
-
-
-
-
-
-
-</body>
-
+  </body>
 </html>

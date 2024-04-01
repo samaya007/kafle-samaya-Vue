@@ -1,10 +1,6 @@
 const { createApp } = Vue;
-
-
-
 createApp({
   created() {
-    // Fetch characters from a public API
     fetch('http://localhost/world_of_ice_and_fire_API_mashup/lumen/public/characters')
       .then(res => {
         if (!res.ok) {
@@ -20,10 +16,9 @@ createApp({
         this.error = 'An error occurred while fetching the characters.';
       });
   },
-
   data() {
     return {
-      charactersData: [], // To store the list of characters
+      charactersData: [], 
       characterName: "",
       aliases: "", 
       culture: "", 
@@ -32,17 +27,14 @@ createApp({
       error: ""
     }
   },
-
-  methods: {
+ methods: {
     getCharacter(characterName) {
-      // Reset character details and error
       this.characterName = "";
       this.aliases = "";
       this.culture = "";
       this.born = "";
       this.tvSeries = "";
       this.error = "";
-
       fetch(`https://anapioficeandfire.com/api/characters?name=${characterName}`)
         .then(res => {
           if (!res.ok) {
@@ -51,17 +43,14 @@ createApp({
           return res.json();
         })
         .then(data => {
-          // Find the character in the array
           const character = data.find(character => character.name === characterName);
           if (character) {
             this.characterName = character.name;
-            this.aliases = character.aliases.length > 0 ? character.aliases.join(", ") : "None";
-            this.culture = character.culture ? character.culture : "None";
-            this.born = character.born ? character.born : "None";
-            this.tvSeries = character.tvSeries.length > 0 ? character.tvSeries.join(", ") : "None";
-  
-            // GSAP Animation
-            gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.5 });
+            this.aliases = character.aliases.length > 0 ? character.aliases.join(", ") : "Not Available";
+            this.culture = character.culture ? character.culture : "Not Available";
+            this.born = character.born ? character.born : "Not Available";
+            this.tvSeries = character.tvSeries.length > 0 ? character.tvSeries.join(", ") : "Not Available";
+              gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.5 });
 
           } else {
             this.error = 'Sorry, no character found with the given name. Please choose a different character.';
@@ -73,5 +62,4 @@ createApp({
         });
     }
   }
-
 }).mount('#app');
