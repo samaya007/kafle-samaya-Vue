@@ -13,7 +13,7 @@ createApp({
         return res.json();
       })
       .then(data => {
-        this.charactersData = data; // Assuming the API returns an array of characters
+        this.charactersData = data; 
       })
       .catch(error => {
         console.error(error);
@@ -24,11 +24,11 @@ createApp({
   data() {
     return {
       charactersData: [], // To store the list of characters
-      characterName: "", // Use colon (:) instead of equal sign (=) here
-      aliases: "", // Use colon (:) instead of equal sign (=) here
-      culture: "", // Use colon (:) instead of equal sign (=) here
-      born: "", // Use colon (:) instead of equal sign (=) here
-      tvSeries: "", // Use colon (:) instead of equal sign (=) here
+      characterName: "",
+      aliases: "", 
+      culture: "", 
+      born: "", 
+      tvSeries: "", 
       error: ""
     }
   },
@@ -55,13 +55,13 @@ createApp({
           const character = data.find(character => character.name === characterName);
           if (character) {
             this.characterName = character.name;
-            this.aliases = character.aliases.join(", "); 
-            this.culture = character.culture;
-            this.born = character.born;
-            this.tvSeries = character.tvSeries.join(", ");
-
+            this.aliases = character.aliases.length > 0 ? character.aliases.join(", ") : "None";
+            this.culture = character.culture ? character.culture : "None";
+            this.born = character.born ? character.born : "None";
+            this.tvSeries = character.tvSeries.length > 0 ? character.tvSeries.join(", ") : "None";
+  
             // GSAP Animation
-            gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.8 });
+            gsap.fromTo("#character-info", { opacity: 0 }, { opacity: 1, duration: 0.5 });
 
           } else {
             this.error = 'Sorry, no character found with the given name. Please choose a different character.';
